@@ -5,7 +5,7 @@ const http = require('http').Server(app);
 const PORT = 4000;
 const socketIO = require('socket.io')(http, {
   cors: {
-    origin: "https://chatlipication-9ufl.vercel.app"
+    origin: "*"
   }
 });
 
@@ -49,6 +49,6 @@ app.get("/api", (req, res) => {
   res.json({ message: "Hello" });
 });
 
-http.listen(PORT, () => {
+/**http.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
-});
+});*/
