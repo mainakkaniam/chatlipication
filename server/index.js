@@ -1,23 +1,17 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const http = require('http').Server(app);
-const PORT = 4000;
+const http = require('http').createServer(app);
+const PORT = process.env.PORT || 4000;
 const socketIO = require('socket.io')(http, {
   cors: {
-    origin: "*"
+    origin: "https://chatlipication-9ufl.vercel.app",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"]
   }
 });
 
 app.use(cors());
-
-// Custom CORS middleware
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://chatlipication-9ufl.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
 
 let users = [];
 
@@ -49,6 +43,6 @@ app.get("/api", (req, res) => {
   res.json({ message: "Hello" });
 });
 
-/**http.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});*/
+http.listen( "chatlipication-9ufl.vercel.app", () => {
+  console.log(`Server listening on chatlipication-9ufl.vercel.app`);
+});
