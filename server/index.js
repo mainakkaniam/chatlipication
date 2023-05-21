@@ -7,7 +7,8 @@ const socketIO = require('socket.io')(http, {
   cors: {
     origin: "https://chatlipication-9ufl.vercel.app",
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"]
+    allowedHeaders: ["Content-Type"],
+    credentials: true
   }
 });
 
